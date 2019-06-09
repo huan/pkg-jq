@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.4.1",
-    "@chatie/git-scripts": "0.0.2",
+    "@chatie/git-scripts": "^0.1.1",
     "@chatie/semver": "^0.4.2",
     "@chatie/tsconfig": "^0.6.1",
     "@types/argparse": "^1.0.36",
