@@ -13,8 +13,8 @@ Find the nearest package.json then deal with jq syntax on it. (in-line edit supp
 
 ## FEATURES
 
-1. Search current directory, and all parent directories for `package.json` file automatically.
-1. Use `jq` syntax to deal with the json file.
+1. Search `package.json` in current and all parent directories by default, powered by [pkg-up](https://npmjs.com/package/pkg-up).
+1. Use `jq` syntax to deal with the json file, powered by [node-jq](https://npmjs.com/package/node-jq).
 1. `In-place` edit support by specify a `-i` or `--in-place` argument.
 
 ## USAGE
