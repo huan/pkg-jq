@@ -39,7 +39,7 @@
   },
   "git": {
     "scripts": {
-      "pre-push": "bash scripts/pre-push.sh"
+      "pre-push": "npx git-scripts-pre-push"
     }
   },
   "publishConfig": {
