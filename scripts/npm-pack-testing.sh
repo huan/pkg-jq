@@ -13,8 +13,8 @@ cd $TMPDIR
 npm init -y
 npm install --production \
   *-*.*.*.tgz \
-  @types/node \
-  typescript
+  @chatie/tsconfig \
+  tstest
 
 ./node_modules/.bin/tsc \
   --lib esnext \

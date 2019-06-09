@@ -17,10 +17,22 @@
     "@types/argparse": "^1.0.36",
     "@types/update-notifier": "^2.5.0",
     "read-pkg-up": "^6.0.0",
+    "shx": "^0.3.2",
     "tstest": "^0.2.4"
   },
   "scripts": {
-    "test": "echo test"
+    "build": "tsc",
+    "clean": "shx rm -fr dist/*",
+    "dist": "npm run clean && npm run build",
+    "pack": "npm pack",
+    "lint": "npm run lint:es && npm run lint:ts",
+    "lint:es": "eslint bin/**/*.ts src/**/*.ts tests/**/*.ts",
+    "lint:ts": "tsc --noEmit",
+    "test:pack": "bash -x scripts/npm-pack-testing.sh",
+    "test": "blue-tape -r ts-node/register \"src/**/*.spec.ts\" \"src/*.spec.ts\" \"tests/*.spec.ts\" \"tests/**/*.spec.ts\""
+  },
+  "bin": {
+    "pkg-jq": "dist/bin/pkg-jq.js"
   },
   "repository": {
     "type": "git",
