@@ -25,6 +25,7 @@
     "clean": "shx rm -fr dist/*",
     "dist": "npm run clean && npm run build",
     "pack": "npm pack",
+    "pkg-jq": "ts-node --files bin/pkg-jq.ts",
     "lint": "npm run lint:es && npm run lint:ts",
     "lint:es": "eslint --ignore-pattern fixtures/ bin/**/*.ts src/**/*.ts tests/**/*.ts",
     "lint:ts": "tsc --noEmit",
