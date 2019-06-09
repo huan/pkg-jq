@@ -6,22 +6,23 @@
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
 [![Greenkeeper badge](https://badges.greenkeeper.io/huan/pkg-jq.svg)](https://greenkeeper.io/)
 
+![pkg-jq](https://huan.github.io/pkg-jq/images/pkg-jq.gif)
+> Source: [Processing JSON Data With jq](https://sites.temple.edu/tudsc/2017/09/21/processing-json-data-with-jq/)
+
 Find the nearest package.json then deal with jq syntax on it. (in-line edit supported!)
 
 ## USAGE
 
+### 1. Query
+
 ```shell
-pkger version_is_prod
-pkger version_is_dev
-pkger version_show
-pkger public_config tag=next
+pkg-jq .version
 ```
 
-```ts
-import { Pkger } from 'pkger'
+### 2. Edit In Place
 
-const cwd = path.join(__dirname, '..', '..')
-const pkger = new Pkger({ cwd })
+```shell
+pkg-jq pkg-jq -i '.publishConfig.tag="next"'
 ```
 
 ## DEVELOPMENT
