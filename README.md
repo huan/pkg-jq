@@ -11,18 +11,43 @@
 
 Find the nearest package.json then deal with jq syntax on it. (in-line edit supported!)
 
+## FEATURES
+
+1. Search current directory, and all parent directories for `package.json` file automatically.
+1. Use `jq` syntax to deal with the json file.
+1. `In-place` edit support by specify a `-i` or `--in-place` argument.
+
 ## USAGE
+
+```shell
+$ npm-jq --help
+
+usage: pkg-jq [-h] [-v] [-i] filter [path]
+
+Node.js Package jq Utility
+
+Positional arguments:
+  filter          jq filter
+  path            npm module subdirectory, or a json file. default: $PWD
+
+Optional arguments:
+  -h, --help      Show this help message and exit.
+  -v, --version   Show program's version number and exit.
+  -i, --in-place  edit files in place
+
+```
 
 ### 1. Query
 
 ```shell
-pkg-jq .version
+$ pkg-jq .version
+"0.0.6"
 ```
 
 ### 2. Edit In Place
 
 ```shell
-pkg-jq pkg-jq -i '.publishConfig.tag="next"'
+pkg-jq -i '.publishConfig.tag="next"'
 ```
 
 ## DEVELOPMENT
