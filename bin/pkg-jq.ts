@@ -6,13 +6,13 @@ import pkgUp                from 'pkg-up'
 
 import { jqFile }       from '../src/jq'
 import { resolveFile }  from '../src/resolve-file'
-import { saveFile }     from '../src/save-file';
+import { saveFile }     from '../src/save-file'
 
 import {
   VERSION,
 }               from '../src/'
 
-async function checkUpdate() {
+async function checkUpdate () {
   const pkgFile   = await pkgUp({ cwd: __dirname })
   if (!pkgFile) {
     throw new Error('package.json not found!')
@@ -29,8 +29,8 @@ async function checkUpdate() {
   notifier.notify()
 }
 
-async function main(args: Args): Promise<number> {
-  checkUpdate().catch(console.error)
+async function main (args: Args): Promise<number> {
+  checkUpdate().catch(console.info)
 
   const file   = await resolveFile(args.path)
   const result = await jqFile(args.filter, file)
@@ -50,13 +50,13 @@ interface Args {
   path    : string
 }
 
-function parseArguments(): Args {
+function parseArguments (): Args {
   const parser = new ArgumentParser({
-    prog        : 'pkg-jq',
-    version     : VERSION,
     addHelp     : true,
     description : 'Node.js Package jq Utility',
     epilog      : `Exmaple: pkg-jq -i '.publishConfig.tag="next"'`,
+    prog        : 'pkg-jq',
+    version     : VERSION,
   })
 
   parser.addArgument(
@@ -94,14 +94,14 @@ function parseArguments(): Args {
 }
 
 process.on('warning', (warning) => {
-  console.warn(warning.name);    // Print the warning name
-  console.warn(warning.message); // Print the warning message
-  console.warn(warning.stack);   // Print the stack trace
-});
+  console.info(warning.name)    // Print the warning name
+  console.info(warning.message) // Print the warning message
+  console.info(warning.stack)   // Print the stack trace
+})
 
 main(parseArguments())
-.then(process.exit)
-.catch(e => {
-  console.error(e)
-  process.exit(1)
-})
+  .then(process.exit)
+  .catch(e => {
+    console.info(e)
+    process.exit(1)
+  })

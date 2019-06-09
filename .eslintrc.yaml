@@ -1,2 +1,4 @@
 ---
 extends: '@chatie'
+rules:
+  key-spacing: 'off'

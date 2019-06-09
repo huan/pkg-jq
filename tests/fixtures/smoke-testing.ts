@@ -19,8 +19,8 @@ async function main () {
 }
 
 main()
-.then(process.exit)
-.catch(e => {
-  console.error(e)
-  process.exit(1)
-})
+  .then(process.exit)
+  .catch(e => {
+    console.info(e)
+    process.exit(1)
+  })
