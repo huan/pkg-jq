@@ -1,0 +1,50 @@
+{
+  "name": "pkg-jq",
+  "version": "0.0.1",
+  "description": "Find the nearest package.json then modify it inline by jq syntax",
+  "main": "dist/src/index.js",
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "node-jq": "^1.9.0",
+    "pkg-up": "^3.1.0",
+    "update-notifier": "^3.0.0"
+  },
+  "devDependencies": {
+    "@chatie/eslint-config": "^0.4.1",
+    "@chatie/git-scripts": "0.0.2",
+    "@chatie/semver": "^0.4.2",
+    "@chatie/tsconfig": "^0.6.1",
+    "@types/argparse": "^1.0.36",
+    "@types/update-notifier": "^2.5.0",
+    "read-pkg-up": "^6.0.0",
+    "tstest": "^0.2.4"
+  },
+  "scripts": {
+    "test": "echo test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huan/pkg-jq.git"
+  },
+  "keywords": [
+    "package",
+    "jq",
+    "pkg-up",
+    "edit"
+  ],
+  "author": "Huan LI <zixia@zixia.net>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/huan/pkg-jq/issues"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "bash scripts/pre-push.sh"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "homepage": "https://github.com/huan/pkg-jq#readme"
+}
