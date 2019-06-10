@@ -1,6 +1,6 @@
 {
   "name": "pkg-jq",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Find the nearest package.json then modify it inline by jq syntax",
   "main": "dist/src/index.js",
   "dependencies": {
