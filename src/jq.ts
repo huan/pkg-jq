@@ -3,8 +3,9 @@ import { run } from 'node-jq'
 export async function jqFile (
   filter: string,
   file: string,
+  options?: object,
 ): Promise<string> {
-  const result = await run(filter, file)
+  const result = await run(filter, file, options)
   return result as string // FIXME
 }
 

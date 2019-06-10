@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { ArgumentParser }   from 'argparse'
-import updateNotifier     from 'update-notifier'
+import updateNotifier       from 'update-notifier'
 import pkgUp                from 'pkg-up'
 
 import { jqFile }       from '../src/jq'
@@ -33,7 +33,14 @@ async function main (args: Args): Promise<number> {
   checkUpdate().catch(console.info)
 
   const file   = await resolveFile(args.path)
-  const result = await jqFile(args.filter, file)
+
+  const options = {} as { [key: string]: any }
+
+  if (args.raw) {
+    // SEE: https://github.com/sanack/node-jq/pull/173
+    options['raw'] = true
+  }
+  const result = await jqFile(args.filter, file, options)
 
   if (args.inplace) {
     await saveFile(file, result)
@@ -45,9 +52,10 @@ async function main (args: Args): Promise<number> {
 }
 
 interface Args {
-  filter  : string,
-  inplace : boolean,
+  filter  : string
+  inplace : boolean
   path    : string
+  raw     : boolean
 }
 
 function parseArguments (): Args {
@@ -72,7 +80,7 @@ function parseArguments (): Args {
       help: [
         'npm module subdirectory,',
         'or a json file.',
-        'default: $PWD',
+        'default: $PWD;',
       ].join('\n'),
       nargs: '?',
       defaultValue: process.cwd(),
@@ -82,11 +90,22 @@ function parseArguments (): Args {
   parser.addArgument(
     [ '-i', '--in-place' ],
     {
-      help: 'edit files in place',
+      help: 'edit files in place;',
       action: 'storeConst',
       constant: true,
       defaultValue: false,
       dest: 'inplace',
+    },
+  )
+
+  parser.addArgument(
+    [ '-r' ],
+    {
+      help: 'output raw strings, not JSON texts;',
+      action: 'storeConst',
+      constant: true,
+      defaultValue: false,
+      dest: 'raw',
     },
   )
 

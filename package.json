@@ -57,7 +57,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "tag": "latest"
+    "tag": "next"
   },
   "homepage": "https://github.com/huan/pkg-jq#readme"
 }

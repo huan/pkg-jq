@@ -7,14 +7,14 @@ const PACKAGE_JSON = path.join(__dirname, '../package.json')
 
 const pkg = readPkgUp.sync({ cwd: __dirname })!.package
 
-// pkg.publishConfig.tag = 'next'
+// pkg.publishConfig.tag = 'latest'
 pkg.publishConfig = {
   access: 'public',
   ...pkg.publishConfig,
-  tag: 'next',
+  tag: 'latest',
 }
 
 fs.writeFileSync(PACKAGE_JSON, JSON.stringify(pkg, null, 2))
 // console.log(JSON.stringify(pkg, null, 2))
 
-console.log('set package.json:publicConfig.tag to next.')
+console.info('set package.json:publicConfig.tag to next.')
