@@ -4,7 +4,7 @@ import { ArgumentParser }   from 'argparse'
 import updateNotifier       from 'update-notifier'
 import pkgUp                from 'pkg-up'
 
-import { jqFile }       from '../src/jq'
+import { jqFile }       from '../src/node-jq'
 import { resolveFile }  from '../src/resolve-file'
 import { saveFile }     from '../src/save-file'
 
@@ -40,7 +40,15 @@ async function main (args: Args): Promise<number> {
     // SEE: https://github.com/sanack/node-jq/pull/173
     options['raw'] = true
   }
-  const result = await jqFile(args.filter, file, options)
+
+  let result = await jqFile(args.filter, file, options)
+
+  // FIXME: wait for https://github.com/sanack/node-jq/pull/173 to be merged
+  if (args.raw) {
+    if (result[0] === '"') {
+      result = result.substr(1, result.length - 2)
+    }
+  }
 
   if (args.inplace) {
     await saveFile(file, result)

@@ -30,7 +30,8 @@
     "lint:es": "eslint --ignore-pattern fixtures/ bin/**/*.ts src/**/*.ts tests/**/*.ts",
     "lint:ts": "tsc --noEmit",
     "test:pack": "bash -x scripts/npm-pack-testing.sh",
-    "test": "ts-node --files ./node_modules/.bin/blue-tape \"src/**/*.spec.ts\" \"src/*.spec.ts\" \"tests/*.spec.ts\" \"tests/**/*.spec.ts\""
+    "test:unit": "ts-node --files ./node_modules/.bin/blue-tape \"src/**/*.spec.ts\" \"src/*.spec.ts\" \"tests/*.spec.ts\" \"tests/**/*.spec.ts\"",
+    "test": "npm run lint && npm run test:unit"
   },
   "bin": {
     "pkg-jq": "dist/bin/pkg-jq.js"

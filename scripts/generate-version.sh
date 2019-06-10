@@ -6,11 +6,11 @@ set -e
   exit 1
 }
 
-VERSION=$(ts-node --files bin/pkg-jq .version) as string"
+VERSION=$(ts-node --files bin/pkg-jq .version)
 
-cat <<_SRC_ > src/version.ts
+cat <<_SRC_
 /**
  * This file was auto generated from scripts/generate-version.sh
  */
-export const VERSION = '${VERSION}' as string
+export const VERSION: string = '${VERSION}'
 _SRC_

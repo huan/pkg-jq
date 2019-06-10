@@ -8,7 +8,7 @@ import {
   jqFile,
   jqJson,
   jqString,
-}           from './jq'
+}           from './node-jq'
 
 test('jqFile', async (t) => {
   const JSON_FILE = path.join(__dirname, '../tests/fixtures/test.json')
