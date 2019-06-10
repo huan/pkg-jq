@@ -42,13 +42,14 @@ Exmaple: pkg-jq -i '.publishConfig.tag="next"'
 ### 1. Query
 
 ```shell
+$ grep version package.json
+  "version": "0.0.6",
+
 $ pkg-jq .version
 "0.0.6"
-```
 
-Raw mode:
+// Raw mode:
 
-```shell
 $ pkg-jq -r .version
 0.0.6
 ```
@@ -56,7 +57,15 @@ $ pkg-jq -r .version
 ### 2. Edit In Place
 
 ```shell
-pkg-jq -i '.publishConfig.tag="next"'
+$ grep -E 'publish|tag' package.json
+  "publishConfig": {
+    "tag": "next"
+
+$ pkg-jq -i '.publishConfig.tag="latest"'
+
+$ grep -E 'publish|tag' package.json
+  "publishConfig": {
+    "tag": "latest"
 ```
 
 ## DEVELOPMENT
