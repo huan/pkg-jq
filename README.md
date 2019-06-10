@@ -21,20 +21,22 @@ Find the nearest package.json then deal with jq syntax on it. (in-line edit supp
 
 ```shell
 $ npm-jq --help
-
-usage: pkg-jq [-h] [-v] [-i] filter [path]
+usage: pkg-jq [-h] [-v] [-i] [-r] filter [path]
 
 Node.js Package jq Utility
 
 Positional arguments:
-  filter          jq filter
-  path            npm module subdirectory, or a json file. default: $PWD
+  filter          jq filter.
+  path            npm project subdir, or json file. default: $PWD.
 
 Optional arguments:
   -h, --help      Show this help message and exit.
   -v, --version   Show program's version number and exit.
-  -i, --in-place  edit files in place
+  -i, --in-place  edit files in place.
+  -r              output raw strings, not JSON texts.
 
+
+Exmaple: pkg-jq -i '.publishConfig.tag="next"'
 ```
 
 ### 1. Query
@@ -42,6 +44,13 @@ Optional arguments:
 ```shell
 $ pkg-jq .version
 "0.0.6"
+```
+
+Raw mode:
+
+```shell
+$ pkg-jq -r .version
+0.0.6
 ```
 
 ### 2. Edit In Place

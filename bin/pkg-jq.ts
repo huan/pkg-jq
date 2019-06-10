@@ -78,27 +78,23 @@ function parseArguments (): Args {
   parser.addArgument(
     [ 'filter' ],
     {
-      help: `jq filter`,
+      help: `jq filter.`,
     },
   )
 
   parser.addArgument(
     [ 'path' ],
     {
-      help: [
-        'npm module subdirectory,',
-        'or a json file.',
-        'default: $PWD;',
-      ].join('\n'),
-      nargs: '?',
-      defaultValue: process.cwd(),
+      help         : 'npm project subdir, or json file. default: $PWD.',
+      nargs        : '?',
+      defaultValue : process.cwd(),
     },
   )
 
   parser.addArgument(
     [ '-i', '--in-place' ],
     {
-      help: 'edit files in place;',
+      help: 'edit files in place.',
       action: 'storeConst',
       constant: true,
       defaultValue: false,
@@ -109,7 +105,7 @@ function parseArguments (): Args {
   parser.addArgument(
     [ '-r' ],
     {
-      help: 'output raw strings, not JSON texts;',
+      help: 'output raw strings, not JSON texts.',
       action: 'storeConst',
       constant: true,
       defaultValue: false,
