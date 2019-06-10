@@ -10,10 +10,28 @@ import {
   jqString,
 }           from './node-jq'
 
-test('jqFile', async (t) => {
+test('jqFile query boolean', async (t) => {
   const JSON_FILE = path.join(__dirname, '../tests/fixtures/test.json')
   const FILTER = '.test'
   const EXPECTED_OUTPUT = 'true'
+
+  const output = await jqFile(FILTER, JSON_FILE)
+  t.equal(output, EXPECTED_OUTPUT, 'should filter the file by jqFile')
+})
+
+test('jqFile query string with options = { raw: true }', async (t) => {
+  const JSON_FILE = path.join(__dirname, '../tests/fixtures/test.json')
+  const FILTER = '.version'
+  const EXPECTED_OUTPUT = '1.0.0'
+
+  const output = await jqFile(FILTER, JSON_FILE, { raw: true })
+  t.equal(output, EXPECTED_OUTPUT, 'should filter the file by jqFile')
+})
+
+test('jqFile query string', async (t) => {
+  const JSON_FILE = path.join(__dirname, '../tests/fixtures/test.json')
+  const FILTER = '.version'
+  const EXPECTED_OUTPUT = '"1.0.0"'
 
   const output = await jqFile(FILTER, JSON_FILE)
   t.equal(output, EXPECTED_OUTPUT, 'should filter the file by jqFile')

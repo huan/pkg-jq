@@ -6,7 +6,7 @@ set -e
   exit 1
 }
 
-VERSION=$(ts-node --files bin/pkg-jq .version)
+VERSION=$(ts-node --files bin/pkg-jq -r .version)
 
 cat <<_SRC_
 /**

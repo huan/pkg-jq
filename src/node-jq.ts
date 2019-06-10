@@ -1,12 +1,24 @@
 import { run } from 'node-jq'
 
+export interface JqOptions {
+  raw?: boolean,
+}
+
 export async function jqFile (
-  filter: string,
-  file: string,
-  options?: object,
+  filter   : string,
+  file     : string,
+  options? : JqOptions,
 ): Promise<string> {
-  const result = await run(filter, file, options)
-  return result as string // FIXME
+  let result = await run(filter, file, options) as string // FIXME
+
+  // FIXME: wait for https://github.com/sanack/node-jq/pull/173 to be merged
+  if (options && options.raw) {
+    if (result[0] === '"') {
+      result = result.substr(1, result.length - 2)
+    }
+  }
+
+  return result
 }
 
 export async function jqString (
