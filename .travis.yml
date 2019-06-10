@@ -42,7 +42,7 @@ jobs:
         - echo "NPM Deploying Started ..."
         - npm version
         - echo "export const VERSION = $(ts-node --files bin/pkg-jq .version) as string" > src/version.ts
-        - if semver-is-prod $(ts-node --files bin/pkg-jq -r .version); then ./scripts/package-publish-config-tag-latest.ts; fi
+        - if npx semver-is-prod $(VERSION=$(ts-node --files bin/pkg-jq -r .version) echo $VERSION); then npm run pkg-jq -- -i '.publishConfig.tag="next"' && echo "tag = next set"; fi
         - npm run dist
         - echo "NPM Building Finished."
 
