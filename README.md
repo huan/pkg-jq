@@ -71,6 +71,13 @@ sudo apt-get install libtool
 
 ### master
 
+### v0.2 (10 Jun 2019)
+
+1. Support in-line edit by `-i` parameter
+1. Support raw mode by `-r` parameter
+1. Good unit tests coverage
+1. Travis CI DevOps
+
 ### v0.0.1 (09 Jun 2019)
 
 1. Project inited.
