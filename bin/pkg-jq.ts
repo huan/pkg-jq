@@ -36,7 +36,7 @@ async function main (args: Args): Promise<number> {
   const result = await jqFile(args.filter, file)
 
   if (args.inplace) {
-    await saveFile(result, file)
+    await saveFile(file, result)
   } else {
     console.info(result)
   }

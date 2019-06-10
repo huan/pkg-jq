@@ -1,4 +1,5 @@
 import fs from 'fs'
+import util from 'util'
 
 export async function saveFile (
   file: string,
@@ -18,5 +19,5 @@ export async function saveFile (
   //   await future  // wait file write over
   // }
 
-  await fs.promises.writeFile(file, text)
+  await util.promisify(fs.writeFile)(file, text)
 }
