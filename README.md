@@ -49,7 +49,6 @@ $ pkg-jq .version
 "0.0.6"
 
 # Raw mode: -r
-
 $ pkg-jq -r .version
 0.0.6
 ```
