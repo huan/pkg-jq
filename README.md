@@ -33,7 +33,7 @@ Optional arguments:
   -h, --help      Show this help message and exit.
   -v, --version   Show program's version number and exit.
   -i, --in-place  edit files in place.
-  -r              output raw strings, not JSON texts.
+  -r, --raw       output raw strings, not JSON texts.
 
 
 Exmaple: pkg-jq -i '.publishConfig.tag="next"'
