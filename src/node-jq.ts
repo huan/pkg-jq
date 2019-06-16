@@ -11,7 +11,7 @@ export async function jqFile (
 ): Promise<string> {
   let result = await run(filter, file, options) as string // FIXME
 
-  // FIXME: wait for https://github.com/sanack/node-jq/pull/173 to be merged
+  // FIXME: wait for https://github.com/sanack/node-jq/pull/173 to be published
   if (options && options.raw) {
     if (result[0] === '"') {
       result = result.substr(1, result.length - 2)

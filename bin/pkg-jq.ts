@@ -42,7 +42,6 @@ async function main (args: Args): Promise<number> {
   const options: JqOptions = {}
 
   if (args.raw) {
-    // SEE: https://github.com/sanack/node-jq/pull/173
     options['raw'] = true
   }
 
@@ -101,7 +100,7 @@ function parseArguments (): Args {
   )
 
   parser.addArgument(
-    [ '-r' ],
+    [ '-r', '--raw' ],
     {
       help: 'output raw strings, not JSON texts.',
       action: 'storeConst',
