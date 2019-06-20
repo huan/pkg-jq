@@ -33,7 +33,7 @@ Optional arguments:
   -h, --help      Show this help message and exit.
   -v, --version   Show programs version number and exit.
   -i, --in-place  edit files in place.
-  -r              output raw strings, not JSON texts.
+  -r, --raw       output raw strings, not JSON texts.
 
 
 Exmaple: pkg-jq -i '.publishConfig.tag="next"'
@@ -48,8 +48,7 @@ $ grep version package.json
 $ pkg-jq .version
 "0.0.6"
 
-// Raw mode:
-
+# Raw mode: -r
 $ pkg-jq -r .version
 0.0.6
 ```
