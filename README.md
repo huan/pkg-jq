@@ -31,7 +31,7 @@ Positional arguments:
 
 Optional arguments:
   -h, --help      Show this help message and exit.
-  -v, --version   Show program's version number and exit.
+  -v, --version   Show programs version number and exit.
   -i, --in-place  edit files in place.
   -r              output raw strings, not JSON texts.
 
