@@ -14,7 +14,7 @@
     "@chatie/git-scripts": "^0.2.5",
     "@chatie/semver": "^0.4.2",
     "@chatie/tsconfig": "^0.6.1",
-    "@types/argparse": "^1.0.36",
+    "@types/argparse": "^2.0.5",
     "@types/update-notifier": "^2.5.0",
     "read-pkg-up": "^6.0.0",
     "shx": "^0.3.2",
