@@ -5,7 +5,7 @@
   "main": "dist/src/index.js",
   "dependencies": {
     "argparse": "^1.0.10",
-    "node-jq": "^1.9.0",
+    "node-jq": "^1.11.3",
     "pkg-up": "^3.1.0",
     "update-notifier": "^3.0.0"
   },
