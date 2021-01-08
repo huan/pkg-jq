@@ -2,11 +2,10 @@
 
 [![NPM Version](https://badge.fury.io/js/pkg-jq.svg)](https://www.npmjs.com/package/pkg-jq)
 [![npm (tag)](https://img.shields.io/npm/v/pkg-jq/next.svg)](https://www.npmjs.com/package/pkg-jq?activeTab=versions)
-[![Build Status](https://api.travis-ci.com/huan/pkg-jq.svg?branch=master)](https://travis-ci.com/huan/pkg-jq)
+![NPM](https://github.com/huan/pkg-jq/workflows/NPM/badge.svg)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
-[![Greenkeeper badge](https://badges.greenkeeper.io/huan/pkg-jq.svg)](https://greenkeeper.io/)
 
-![pkg-jq](https://huan.github.io/pkg-jq/images/pkg-jq.gif)
+![pkg-jq](docs/images/pkg-jq.gif)
 > Source: [Processing JSON Data With jq](https://sites.temple.edu/tudsc/2017/09/21/processing-json-data-with-jq/)
 
 Find the nearest package.json then deal with jq syntax on it. (in-line edit supported!)
