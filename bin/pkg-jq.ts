@@ -101,7 +101,7 @@ function parseArguments (): Args {
     '-i',
     '--in-place',
     {
-      action  : 'storeConst',
+      action  : 'store_const',
       const   : true,
       default : false,
       dest    : 'inplace',
@@ -113,7 +113,7 @@ function parseArguments (): Args {
     '-r',
     '--raw',
     {
-      action  : 'storeConst',
+      action  : 'store_const',
       const   : true,
       default : false,
       dest    : 'raw',
