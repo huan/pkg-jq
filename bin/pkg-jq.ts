@@ -42,10 +42,10 @@ async function main (args: Args): Promise<number> {
   const options: JqOptions = {}
 
   if (args.raw) {
-    options['raw'] = true
+    options.raw = true
   }
 
-  let result = await jqFile(args.filter, file, options)
+  const result = await jqFile(args.filter, file, options)
 
   if (args.inplace) {
     await saveFile(file, result)
@@ -65,52 +65,63 @@ interface Args {
 
 function parseArguments (): Args {
   const parser = new ArgumentParser({
-    addHelp     : true,
+    add_help    : true,
     description : 'Node.js Package jq Utility',
-    epilog      : `Exmaple: pkg-jq -i '.publishConfig.tag="next"'`,
+    epilog      : 'Exmaple: pkg-jq -i \'.publishConfig.tag="next"\'',
     prog        : 'pkg-jq',
-    version     : VERSION,
+    // version     : VERSION,
   })
 
-  parser.addArgument(
-    [ 'filter' ],
+  parser.add_argument(
+    '-v',
+    '--version',
     {
-      help: `jq filter.`,
+      action: 'version',
+      version: VERSION,
     },
   )
 
-  parser.addArgument(
-    [ 'path' ],
+  parser.add_argument(
+    'filter',
     {
-      help         : 'npm project subdir, or json file. default: $PWD.',
-      nargs        : '?',
-      defaultValue : process.cwd(),
+      help: 'jq filter.',
     },
   )
 
-  parser.addArgument(
-    [ '-i', '--in-place' ],
+  parser.add_argument(
+    'path',
     {
-      help: 'edit files in place.',
-      action: 'storeConst',
-      constant: true,
-      defaultValue: false,
-      dest: 'inplace',
+      default : process.cwd(),
+      help    : 'npm project subdir, or json file. default: $PWD.',
+      nargs   : '?',
     },
   )
 
-  parser.addArgument(
-    [ '-r', '--raw' ],
+  parser.add_argument(
+    '-i',
+    '--in-place',
     {
-      help: 'output raw strings, not JSON texts.',
-      action: 'storeConst',
-      constant: true,
-      defaultValue: false,
-      dest: 'raw',
+      action  : 'storeConst',
+      const   : true,
+      default : false,
+      dest    : 'inplace',
+      help    : 'edit files in place.',
     },
   )
 
-  return parser.parseArgs()
+  parser.add_argument(
+    '-r',
+    '--raw',
+    {
+      action  : 'storeConst',
+      const   : true,
+      default : false,
+      dest    : 'raw',
+      help    : 'output raw strings, not JSON texts.',
+    },
+  )
+
+  return parser.parse_args()
 }
 
 process.on('warning', (warning) => {
